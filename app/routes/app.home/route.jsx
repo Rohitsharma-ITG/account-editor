@@ -132,41 +132,15 @@ const route = () => {
            <FiUsers />
         </div>
       </div>
-      <div className="boxx">
-        <div className="boxx-content">
-          <p>Total Customers</p>
-          <h4>1402</h4>
-        </div>
-        <div className="box-icon">
-           <FiUsers />
-        </div>
-      </div>
-      <div className="boxx">
-        <div className="boxx-content">
-          <p>Total Customers</p>
-          <h4>1402</h4>
-        </div>
-        <div className="box-icon">
-           <FiUsers />
-        </div>
-      </div>
-      <div className="boxx">
-        <div className="boxx-content">
-          <p>Total Customers</p>
-          <h4>1402</h4>
-        </div>
-        <div className="box-icon">
-           <FiUsers />
-        </div>
-      </div>
+     
     </div>
     <div className="table-wrapper">
           <table className="Home-table">
             <thead>
               <tr>
-                <th className='first-col'>My Shopify Domain</th>
-                <th>Android</th>
-                <th>Ios</th>
+                <th >My Shopify Domain</th>
+                {/* <th>Android</th>
+                <th>Ios</th> */}
                 
               </tr>
             </thead>

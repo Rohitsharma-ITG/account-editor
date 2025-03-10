@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './partnerDetail.css';
 import { FiUser } from "react-icons/fi";
-import PartnerProfile from '../Components/PartnerProfile/PartnerProfile';
+import PartnerProfile from '../Components/StoreProfile/StoreProfile';
 // import PartnerOrders from '../Components/PartnerProfile/PartnerOrders';
 // import PartnerSettings from '../Components/PartnerProfile/PartnerSettings';
 
@@ -9,12 +9,10 @@ const PartnerDetail = () => {
   const [activeTab, setActiveTab] = useState("profile");
 
   const tabs = [
-    { id: "profile", label: "Partner Profile", icon: <FiUser /> },
+    { id: "profile", label: "Store Profile", icon: <FiUser /> },
     { id: "status", label: "App Status", icon: <FiUser /> },
     { id: "features", label: "App Features", icon: <FiUser /> },
-    { id: "pluggins", label: "Pluggins", icon: <FiUser /> },
     { id: "settings", label: "Settings", icon: <FiUser /> },
-    { id: "googleFirebase", label: "Google Firebase", icon: <FiUser /> }
   ];
 
   const renderComponent = () => {

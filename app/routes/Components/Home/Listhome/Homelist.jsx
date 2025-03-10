@@ -8,8 +8,8 @@ const Homelist = ({ stores }) => {
         stores.map((store, index) => (
           <tr key={index}>
             <td>{store.myshopify_domain}</td>
-            <td>{store.android}</td>
-            <td>{store. ios}</td>
+            {/* <td>{store.android}</td>
+            <td>{store. ios}</td> */}
             
            
           </tr>

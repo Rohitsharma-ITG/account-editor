@@ -1,39 +1,29 @@
 import React from 'react'
-import './PartnerProfile.css'
-const PartnerProfile = () => {
+import './StoreProfile.css'
+const StoreProfile = () => {
   return (
     <>
     <div className="profilee-main-container">
       <div className="top-headingp">
-        <h2>Partner Details</h2>
-        <p>Partner Details and Amenities</p>
+        <h2>Store Details</h2>
+        <p>Store Details and Amenities</p>
       </div>
       <div className="profile-sections">
         <div className="section">
           <div className='sec-div'>
-            <h4>Active Paln :</h4>
+            <h4>Active Plan :</h4>
             <button>Elite</button>
           </div>
           <div className='sec-div'>
-            <h4>Shop Name</h4>
+            <h4>Shop Name:</h4>
             <p>Hautes Fashions</p>
           </div>
+         
           <div className='sec-div'>
-            <h4>Current Theme</h4>
-            <p>First</p>
-          </div>
-          <div className='sec-div'>
-            <h4>Package Name</h4>
+            <h4>Package Name:</h4>
             <p>Com.itg.Mob65859769867678687</p>
           </div>
-          <div className='sec-div'>
-            <h4>App Icon Src</h4>
-            <p>https://esa-indore-1.myshopify.com/admin/</p>
-          </div>
-          <div className='sec-div'>
-            <h4>Shop Name</h4>
-            <p>Hautes Fashions</p>
-          </div>
+         
         </div>
         <div className="section">
           <div className='sec-div'>
@@ -41,26 +31,18 @@ const PartnerProfile = () => {
             <button>Elite</button>
           </div>
           <div className='sec-div'>
-            <h4>Shop Name</h4>
+            <h4>Shop Owner:</h4>
             <p>Hautes Fashions</p>
           </div>
           <div className='sec-div'>
-            <h4>Current Theme</h4>
+            <h4>Email:</h4>
             <p>First</p>
           </div>
           <div className='sec-div'>
-            <h4>Package Name</h4>
+            <h4>Plan Name:</h4>
             <p>Com.itg.Mob65859769867678687</p>
           </div>
-          <div className='sec-div'>
-            <h4>App Icon Src</h4>
-            <p>https://esa-indore-1.myshopify.com/admin/</p>
-
-          </div>
-          <div className='sec-div'>
-            <h4>Shop Name</h4>
-            <p>Hautes Fashions</p>
-          </div>
+         
         </div>
         <div className="section">
           <div className='sec-div'>
@@ -68,26 +50,18 @@ const PartnerProfile = () => {
             <button>Elite</button>
           </div>
           <div className='sec-div'>
-            <h4>Shop Name</h4>
+            <h4>Domain:</h4>
             <p>Hautes Fashions</p>
           </div>
           <div className='sec-div'>
-            <h4>Current Theme</h4>
+            <h4>Phone No. :</h4>
             <p>First</p>
           </div>
           <div className='sec-div'>
-            <h4>Package Name</h4>
+            <h4>Amount:</h4>
             <p>Com.itg.Mob65859769867678687</p>
           </div>
-          <div className='sec-div'>
-            <h4>App Icon Src</h4>
-            <p>https://esa-indore-1.myshopify.com/admin/</p>
-            
-          </div>
-          <div className='sec-div'>
-            <h4>Shop Name</h4>
-            <p>Hautes Fashions</p>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -95,4 +69,4 @@ const PartnerProfile = () => {
   )
 }
 
-export default PartnerProfile
+export default StoreProfile
