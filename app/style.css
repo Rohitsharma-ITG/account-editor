@@ -69,7 +69,7 @@ button.logOutButton {
     text-decoration: none;
     font-size: 13px;
     color: #000;
-    transition: background 0.3s ease, color 0.3s ease;
+    /* transition: background 0.3s ease, color 0.3s ease; */
 }
   
   .nav-links li.active a,
