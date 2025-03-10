@@ -71,8 +71,6 @@
   display: flex;
   /* justify-content: center; */
   margin-top: 10px;
-   position: fixed;
-  bottom: 5%; 
 }
 
 .pagination button {

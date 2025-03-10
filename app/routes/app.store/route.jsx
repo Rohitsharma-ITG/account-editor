@@ -1,46 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import './partner.css';
 import List from '../Components/StoreList/list';
 
 const Route = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; 
-
-  const partners = [
-    { name: "John Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },
-    { name: "Jane Smith", email: "jane@example.com", number: "9876543210", plan: "Basic", shop: "jane-store.myshopify.com" },
-    { name: "Mike Ross", email: "mike@example.com", number: "1122334455", plan: "Standard", shop: "mike-shop.myshopify.com" },
-    { name: "Harvey Specter", email: "harvey@example.com", number: "5566778899", plan: "Pro", shop: "harvey-store.myshopify.com" },
-    { name: "Rachel Zane", email: "rachel@example.com", number: "9988776655", plan: "Premium", shop: "rachel-shop.myshopify.com" },
-    { name: "Donna Paulsen", email: "donna@example.com", number: "6677889900", plan: "Basic", shop: "donna-store.myshopify.com" },
-    { name: "Louis Litt", email: "louis@example.com", number: "3344556677", plan: "Standard", shop: "louis-shop.myshopify.com" },
-    { name: "Jessica Pearson", email: "jessica@example.com", number: "2233445566", plan: "Pro", shop: "jessica-store.myshopify.com" },
-    { name: "Johneeee Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },
-    { name: "Janeee Smith", email: "jane@example.com", number: "9876543210", plan: "Basic", shop: "jane-store.myshopify.com" },
-    { name: "Mikeeee Ross", email: "mike@example.com", number: "1122334455", plan: "Standard", shop: "mike-shop.myshopify.com" },
-    { name: "Harveyee Specter", email: "harvey@example.com", number: "5566778899", plan: "Pro", shop: "harvey-store.myshopify.com" },
-    { name: "Rachelee Zane", email: "rachel@example.com", number: "9988776655", plan: "Premium", shop: "rachel-shop.myshopify.com" },
-    { name: "Donna eePaulsen", email: "donna@example.com", number: "6677889900", plan: "Basic", shop: "donna-store.myshopify.com" },
-    { name: "Louiseeee Litt", email: "louis@example.com", number: "3344556677", plan: "Standard", shop: "louis-shop.myshopify.com" },
-    { name: "Jessiceeeeea Pearson", email: "jessica@example.com", number: "2233445566", plan: "Pro", shop: "jessica-store.myshopify.com" },
-    { name: "Johngggg Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },
-    { name: "Janegggg Smith", email: "jane@example.com", number: "9876543210", plan: "Basic", shop: "jane-store.myshopify.com" },
-    { name: "Mikerrrrr Ross", email: "mike@example.com", number: "1122334455", plan: "Standard", shop: "mike-shop.myshopify.com" },
-    { name: "Harveyr Specter", email: "harvey@example.com", number: "5566778899", plan: "Pro", shop: "harvey-store.myshopify.com" },
-    { name: "Rachel Zane", email: "rachel@example.com", number: "9988776655", plan: "Premium", shop: "rachel-shop.myshopify.com" },
-    { name: "Donna Paulsen", email: "donna@example.com", number: "6677889900", plan: "Basic", shop: "donna-store.myshopify.com" },
-    { name: "Louis Litt", email: "louis@example.com", number: "3344556677", plan: "Standard", shop: "louis-shop.myshopify.com" },
-    { name: "Jessica Pearson", email: "jessica@example.com", number: "2233445566", plan: "Pro", shop: "jessica-store.myshopify.com" },
-    { name: "John Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },
-    { name: "Jane Smith", email: "jane@example.com", number: "9876543210", plan: "Basic", shop: "jane-store.myshopify.com" },
-    { name: "Mike Ross", email: "mike@example.com", number: "1122334455", plan: "Standard", shop: "mike-shop.myshopify.com" },
-    { name: "Harvey Specter", email: "harvey@example.com", number: "5566778899", plan: "Pro", shop: "harvey-store.myshopify.com" },
-    { name: "Rachel Zane", email: "rachel@example.com", number: "9988776655", plan: "Premium", shop: "rachel-shop.myshopify.com" },
-    { name: "Donna Paulsen", email: "donna@example.com", number: "6677889900", plan: "Basic", shop: "donna-store.myshopify.com" },
-    { name: "Louis Litt", email: "louis@example.com", number: "3344556677", plan: "Standard", shop: "louis-shop.myshopify.com" },
-    { name: "Jessica Pearson", email: "jessica@example.com", number: "2233445566", plan: "Pro", shop: "jessica-store.myshopify.com" },
-  ];
-
+  const itemsPerPage = 2; 
+  const [partners, setpartners] = useState([])
+  // const partners = [
+  //   { name: "John Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },
+  //   { name: "Jane Smith", email: "jane@example.com", number: "9876543210", plan: "Basic", shop: "jane-store.myshopify.com" },
+  //   { name: "Mike Ross", email: "mike@example.com", number: "1122334455", plan: "Standard", shop: "mike-shop.myshopify.com" },
+  //   { name: "Harvey Specter", email: "harvey@example.com", number: "5566778899", plan: "Pro", shop: "harvey-store.myshopify.com" },
+  //   { name: "Rachel Zane", email: "rachel@example.com", number: "9988776655", plan: "Premium", shop: "rachel-shop.myshopify.com" },
+  //   { name: "Donna Paulsen", email: "donna@example.com", number: "6677889900", plan: "Basic", shop: "donna-store.myshopify.com" },
+  //   { name: "Louis Litt", email: "louis@example.com", number: "3344556677", plan: "Standard", shop: "louis-shop.myshopify.com" },
+  //   { name: "Jessica Pearson", email: "jessica@example.com", number: "2233445566", plan: "Pro", shop: "jessica-store.myshopify.com" },
+  //   { name: "Johneeee Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },
+  //   { name: "Janeee Smith", email: "jane@example.com", number: "9876543210", plan: "Basic", shop: "jane-store.myshopify.com" },
+  //   { name: "Mikeeee Ross", email: "mike@example.com", number: "1122334455", plan: "Standard", shop: "mike-shop.myshopify.com" },
+  //   { name: "Harveyee Specter", email: "harvey@example.com", number: "5566778899", plan: "Pro", shop: "harvey-store.myshopify.com" },
+  //   { name: "Rachelee Zane", email: "rachel@example.com", number: "9988776655", plan: "Premium", shop: "rachel-shop.myshopify.com" },
+  //   { name: "Donna eePaulsen", email: "donna@example.com", number: "6677889900", plan: "Basic", shop: "donna-store.myshopify.com" },
+  //   { name: "Louiseeee Litt", email: "louis@example.com", number: "3344556677", plan: "Standard", shop: "louis-shop.myshopify.com" },
+  //   { name: "Jessiceeeeea Pearson", email: "jessica@example.com", number: "2233445566", plan: "Pro", shop: "jessica-store.myshopify.com" },
+  //   { name: "Johngggg Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },
+  //   { name: "Janegggg Smith", email: "jane@example.com", number: "9876543210", plan: "Basic", shop: "jane-store.myshopify.com" },
+  //   { name: "Mikerrrrr Ross", email: "mike@example.com", number: "1122334455", plan: "Standard", shop: "mike-shop.myshopify.com" },
+  //   { name: "Harveyr Specter", email: "harvey@example.com", number: "5566778899", plan: "Pro", shop: "harvey-store.myshopify.com" },
+  //   { name: "Rachel Zane", email: "rachel@example.com", number: "9988776655", plan: "Premium", shop: "rachel-shop.myshopify.com" },
+  //   { name: "Donna Paulsen", email: "donna@example.com", number: "6677889900", plan: "Basic", shop: "donna-store.myshopify.com" },
+  //   { name: "Louis Litt", email: "louis@example.com", number: "3344556677", plan: "Standard", shop: "louis-shop.myshopify.com" },
+  //   { name: "Jessica Pearson", email: "jessica@example.com", number: "2233445566", plan: "Pro", shop: "jessica-store.myshopify.com" },
+  //   { name: "John Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },
+  //   { name: "Jane Smith", email: "jane@example.com", number: "9876543210", plan: "Basic", shop: "jane-store.myshopify.com" },
+  //   { name: "Mike Ross", email: "mike@example.com", number: "1122334455", plan: "Standard", shop: "mike-shop.myshopify.com" },
+  //   { name: "Harvey Specter", email: "harvey@example.com", number: "5566778899", plan: "Pro", shop: "harvey-store.myshopify.com" },
+  //   { name: "Rachel Zane", email: "rachel@example.com", number: "9988776655", plan: "Premium", shop: "rachel-shop.myshopify.com" },
+  //   { name: "Donna Paulsen", email: "donna@example.com", number: "6677889900", plan: "Basic", shop: "donna-store.myshopify.com" },
+  //   { name: "Louis Litt", email: "louis@example.com", number: "3344556677", plan: "Standard", shop: "louis-shop.myshopify.com" },
+  //   { name: "Jessica Pearson", email: "jessica@example.com", number: "2233445566", plan: "Pro", shop: "jessica-store.myshopify.com" },
+  // ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/partners');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        setpartners(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
   const totalPages = Math.ceil(partners.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
