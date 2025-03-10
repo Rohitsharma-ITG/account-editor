@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './partner.css';
-import List from '../Components/Partner/list';
+import List from '../Components/StoreList/list';
 
 const Route = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,8 +54,8 @@ const Route = () => {
     <>
       <div className="main-partner-container">
         <div className="top-heading">
-          <h2>Partners Table</h2>
-          <p>List of partners connected to services</p>
+          <h2>Stores</h2>
+          <p>List of stores connected to services</p>
         </div>
         <div className="table-wrapper">
           <table className="partner-table">

@@ -52,22 +52,15 @@ export default function App() {
                       <span>Home</span>
                     </Link>
                   </li>
-                  <li className={location.pathname === "/app/partner" ? "active" : ""}>
-                    <Link to="/app/partner">
+                  <li className={location.pathname === "/app/store" ? "active" : ""}>
+                    <Link to="/app/store">
                       <div className="nav-icons">
                         <FiUsers />
                       </div>
-                      <span>Shop</span>
+                      <span>Store</span>
                     </Link>
                   </li>
-                  <li className={location.pathname === "/app/support" ? "active" : ""}>
-                    <Link to="/app/support">
-                      <div className="nav-icons">
-                        <IoCallOutline />
-                      </div>
-                      <span>Support</span>
-                    </Link>
-                  </li>
+                  
                 </ul>
               </div>
             </div>

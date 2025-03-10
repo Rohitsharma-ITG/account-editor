@@ -7,7 +7,7 @@ const List = ({ partners }) => {
   const navigate=useNavigate()
   const handleNavigate=()=>{
     console.log("runn")
-    navigate('/app/partnerdetail')
+    navigate('/app/storedetail')
   }
   return (
     <>
