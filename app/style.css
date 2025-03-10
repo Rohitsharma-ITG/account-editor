@@ -30,7 +30,6 @@ button.logOutButton {
 .navbar {
     width: 10%;
     background: white;
-    height: calc(100vh - 73px);
     border-radius: 5px;
     margin-right: 7px;
 }
@@ -69,7 +68,7 @@ button.logOutButton {
     text-decoration: none;
     font-size: 13px;
     color: #000;
-    transition: background 0.3s ease, color 0.3s ease;
+    /* transition: background 0.3s ease, color 0.3s ease; */
 }
   
   .nav-links li.active a,
