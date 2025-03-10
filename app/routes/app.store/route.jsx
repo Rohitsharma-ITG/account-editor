@@ -4,7 +4,7 @@ import List from '../Components/StoreList/list';
 
 const Route = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; 
+  const itemsPerPage = 7; 
 
   const partners = [
     { name: "John Doe", email: "john@example.com", number: "1234567890", plan: "Premium", shop: "john-shop.myshopify.com" },

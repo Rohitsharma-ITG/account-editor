@@ -5,7 +5,7 @@
 .top-home-boxes{
   display: flex;
   justify-content: start;
-  margin-bottom: 2rem;
+  /* margin-bottom: 1rem; */
 }
 .boxx{
   display: flex;
@@ -50,6 +50,7 @@
 .Home-table {
   width: 100%;
   border-collapse: collapse;
+  /* margin-bottom: 2rem; */
 }
 
 .Home-table th,
@@ -71,8 +72,8 @@
   display: flex;
   /* justify-content: center; */
   margin-top: 10px;
-   position: fixed;
-  bottom: 5%; 
+   /* position: fixed;
+  bottom: 5%;  */
 }
 
 .pagination button {

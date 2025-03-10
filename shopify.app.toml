@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "80394bd99ceb91c1f20019f9a91bd697"
-application_url = "https://biotechnology-analysts-vault-sussex.trycloudflare.com"
+application_url = "https://largely-pilot-causing-stack.trycloudflare.com"
 embedded = true
 name = "account-dev"
 handle = "account-dev-1"
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://biotechnology-analysts-vault-sussex.trycloudflare.com/auth/callback",
-  "https://biotechnology-analysts-vault-sussex.trycloudflare.com/auth/shopify/callback",
-  "https://biotechnology-analysts-vault-sussex.trycloudflare.com/api/auth/callback"
+  "https://largely-pilot-causing-stack.trycloudflare.com/auth/callback",
+  "https://largely-pilot-causing-stack.trycloudflare.com/auth/shopify/callback",
+  "https://largely-pilot-causing-stack.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

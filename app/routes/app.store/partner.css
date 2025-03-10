@@ -33,6 +33,7 @@
 .partner-table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 2rem;
 }
 
 .partner-table th,
@@ -54,8 +55,9 @@
   display: flex;
   /* justify-content: center; */
   margin-top: 10px;
-   position: fixed;
+   /* position: fixed;
   bottom: 5%; 
+} */
 }
 
 .pagination button {

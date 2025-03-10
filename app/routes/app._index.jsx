@@ -1,112 +1,172 @@
-import { useEffect } from "react";
-import { useFetcher } from "@remix-run/react";
-import {
-  Page,
-  Layout,
-  Text,
-  Card,
-  Button,
-  BlockStack,
-  Box,
-  List,
-  Link,
-  InlineStack,
-} from "@shopify/polaris";
-import { TitleBar, useAppBridge } from "@shopify/app-bridge-react";
-import { authenticate } from "../shopify.server";
+import React,{useState} from 'react'
+import './app.home/home.css'
+// import './home.css'
+import { FiUsers } from 'react-icons/fi'
+// import List from '../Components/Partner/list';
+// import Homelist from '../Components/Home/Listhome/Homelist'
+import Homelist from './Components/Home/Listhome/Homelist'
 
-export const loader = async ({ request }) => {
-  await authenticate.admin(request);
-
-  return null;
-};
-
-export const action = async ({ request }) => {
-  const { admin } = await authenticate.admin(request);
-  const color = ["Red", "Orange", "Yellow", "Green"][
-    Math.floor(Math.random() * 4)
-  ];
-  const response = await admin.graphql(
-    `#graphql
-      mutation populateProduct($product: ProductCreateInput!) {
-        productCreate(product: $product) {
-          product {
-            id
-            title
-            handle
-            status
-            variants(first: 10) {
-              edges {
-                node {
-                  id
-                  price
-                  barcode
-                  createdAt
-                }
-              }
-            }
-          }
-        }
-      }`,
-    {
-      variables: {
-        product: {
-          title: `${color} Snowboard`,
-        },
+const route = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 7; 
+  
+    const stores = [
+      {
+        myshopify_domain: "john-shop.myshopify.com",
+        android: "0",
+        ios: "23"
       },
-    },
-  );
-  const responseJson = await response.json();
-  const product = responseJson.data.productCreate.product;
-  const variantId = product.variants.edges[0].node.id;
-  const variantResponse = await admin.graphql(
-    `#graphql
-    mutation shopifyRemixTemplateUpdateVariant($productId: ID!, $variants: [ProductVariantsBulkInput!]!) {
-      productVariantsBulkUpdate(productId: $productId, variants: $variants) {
-        productVariants {
-          id
-          price
-          barcode
-          createdAt
-        }
-      }
-    }`,
-    {
-      variables: {
-        productId: product.id,
-        variants: [{ id: variantId, price: "100.00" }],
+      {
+        myshopify_domain: "jane-store.myshopify.com",
+       android: "0",
+        ios: "23"
       },
-    },
-  );
-  const variantResponseJson = await variantResponse.json();
-
-  return {
-    product: responseJson.data.productCreate.product,
-    variant: variantResponseJson.data.productVariantsBulkUpdate.productVariants,
-  };
-};
-
-export default function Index() {
-  const fetcher = useFetcher();
-  const shopify = useAppBridge();
-  const isLoading =
-    ["loading", "submitting"].includes(fetcher.state) &&
-    fetcher.formMethod === "POST";
-  const productId = fetcher.data?.product?.id.replace(
-    "gid://shopify/Product/",
-    "",
-  );
-
-  useEffect(() => {
-    if (productId) {
-      shopify.toast.show("Product created");
-    }
-  }, [productId, shopify]);
-  const generateProduct = () => fetcher.submit({}, { method: "POST" });
-
+      {
+        myshopify_domain: "mike-shop.myshopify.com",
+         android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "harvey-store.myshopify.com",
+      android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "rachel-shop.myshopify.com",
+         android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "donna-store.myshopify.com",
+        android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "louis-shop.myshopify.com",
+       android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "jessica-store.myshopify.com",
+      android: "0",
+        ios: "23"
+      },  {
+        myshopify_domain: "harvey-store.myshopify.com",
+       android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "rachel-shop.myshopify.com",
+   android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "donna-store.myshopify.com",
+        android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "louis-shop.myshopify.com",
+        android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "jessica-store.myshopify.com",
+        android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "harvey-store.myshopify.com",
+      android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "rachel-shop.myshopify.com",
+         android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "donna-store.myshopify.com",
+        android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "louis-shop.myshopify.com",
+       android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "jessica-store.myshopify.com",
+      android: "0",
+        ios: "23"
+      },  {
+        myshopify_domain: "harvey-store.myshopify.com",
+       android: "0",
+        ios: "23"
+      },
+      {
+        myshopify_domain: "rachel-shop.myshopify.com",
+   android: "0",
+        ios: "23"
+      },
+      
+    ];
+    
+  
+    const totalPages = Math.ceil(stores.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = stores.slice(indexOfFirstItem, indexOfLastItem);
+  
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const goToPreviousPage = () => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
+    const goToNextPage = () => setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
+  
   return (
-<>
-  <h2>dbbdfbfbfgbfbg</h2>
-</>
-  );
+  <div className="main-home-container">
+    <div className="top-home-boxes">
+      <div className="boxx">
+        <div className="boxx-content">
+          <p>Total Customers</p>
+          <h4>1402</h4>
+        </div>
+        <div className="box-icon">
+           <FiUsers />
+        </div>
+      </div>
+     
+    </div>
+    <div className="table-wrapper">
+          <table className="Home-table">
+            <thead>
+              <tr>
+                <th >My Shopify Domain</th>
+                {/* <th>Android</th>
+                <th>Ios</th> */}
+                
+              </tr>
+            </thead>
+            <tbody>
+              <Homelist stores={currentItems} />
+            </tbody>
+          </table>
+
+          <div className="pagination">
+            <button onClick={goToPreviousPage} disabled={currentPage === 1}>&lt;</button>
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                className={currentPage === i + 1 ? 'active' : ''}
+                onClick={() => paginate(i + 1)}
+              >
+                {i + 1}
+              </button>
+            ))}
+            <button onClick={goToNextPage} disabled={currentPage === totalPages}>&gt;</button>
+          </div>
+        </div>
+  </div>
+  )
 }
+
+export default route
