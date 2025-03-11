@@ -16,7 +16,6 @@ const List = ({ partners }) => {
     <>
       {partners.length > 0 ? (
         partners.map((partner, index) => (
-       <>
           <tr key={index}>
             <td>{partner?.shopJson?.name}</td>
             <td>{partner?.shopJson?.customer_email}</td>
@@ -31,35 +30,6 @@ const List = ({ partners }) => {
               
             </td>
           </tr>
-          <tr key={index}>
-            <td>{partner?.shopJson?.name}</td>
-            <td>{partner?.shopJson?.customer_email}</td>
-            <td>{partner.phone}</td>
-            <td>{partner.planName}</td>
-            <td>{partner.myshopify_domain}</td>
-            <td >
-           <button className="view-btn" onClick={()=>handleNavigate(partner._id)} >
-           View
-           </button>
-          
-              
-            </td>
-          </tr>
-          <tr key={index}>
-            <td>{partner?.shopJson?.name}</td>
-            <td>{partner?.shopJson?.customer_email}</td>
-            <td>{partner.phone}</td>
-            <td>{partner.planName}</td>
-            <td>{partner.myshopify_domain}</td>
-            <td >
-           <button className="view-btn" onClick={()=>handleNavigate(partner._id)} >
-           View
-           </button>
-          
-              
-            </td>
-          </tr>
-       </>
         ))
       ) : (
         <tr>
