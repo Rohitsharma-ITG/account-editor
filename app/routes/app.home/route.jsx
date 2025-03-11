@@ -195,7 +195,7 @@ const Route = () => {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const itemsPerPage = 2;
+  const itemsPerPage = 8;
 
   // Fetching Data from API
   useEffect(() => {
