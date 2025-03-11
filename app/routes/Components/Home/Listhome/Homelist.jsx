@@ -6,6 +6,7 @@ const Homelist = ({ stores }) => {
     <>
       {stores.length > 0 ? (
         stores.map((store, index) => (
+         <>
           <tr key={index}>
             <td>{store.myshopify_domain}</td>
             {/* <td>{store.android}</td>
@@ -13,6 +14,8 @@ const Homelist = ({ stores }) => {
             
            
           </tr>
+         
+         </>
         ))
       ) : (
         <tr>

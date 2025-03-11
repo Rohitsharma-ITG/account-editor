@@ -44,7 +44,7 @@ export default function App() {
             <div className="navbar">
               <div className="sidebar">
                 <ul className="nav-links">
-                  <li className={location.pathname === "/app/home" ? "active" : ""}>
+                  <li className={location.pathname === "/app" ? "active" : ""}>
                     <Link to="/app">
                       <div className="nav-icons">
                         <AiOutlineHome />

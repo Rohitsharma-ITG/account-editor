@@ -4,29 +4,35 @@ import { Link } from '@remix-run/react';
 import { useNavigate } from '@remix-run/react';
 
 const List = ({ partners }) => {
+
   const navigate=useNavigate()
-  const handleNavigate=()=>{
+
+  const handleNavigate=(id)=>{
     console.log("runn")
-    navigate('/app/storedetail')
+    navigate(`/app/storedetail/${id}`)
   }
+
   return (
     <>
       {partners.length > 0 ? (
         partners.map((partner, index) => (
+       <>
           <tr key={index}>
-            <td>{partner.name}</td>
-            <td>{partner.email}</td>
-            <td>{partner.number}</td>
-            <td>{partner.plan}</td>
-            <td>{partner.shop}</td>
+            <td>{partner?.shopJson?.name}</td>
+            <td>{partner?.shopJson?.customer_email}</td>
+            <td>{partner.phone}</td>
+            <td>{partner.planName}</td>
+            <td>{partner.myshopify_domain}</td>
             <td >
-           <button className="view-btn" onClick={()=>handleNavigate()} >
+           <button className="view-btn" onClick={()=>handleNavigate(partner._id)} >
            View
            </button>
           
               
             </td>
           </tr>
+        
+       </>
         ))
       ) : (
         <tr>

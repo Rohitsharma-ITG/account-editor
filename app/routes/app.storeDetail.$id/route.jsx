@@ -1,26 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './partnerDetail.css';
 import { FiUser } from "react-icons/fi";
-import PartnerProfile from '../Components/StoreProfile/StoreProfile';
+// import PartnerProfile from '../Components/StoreProfile/StoreProfile';
+import StoreProfile from "../Components/StoreProfile/StoreProfile"
+import OrderEditss from "../Components/OrderEdits/route.jsx"
+import { useParams } from '@remix-run/react';
 // import PartnerOrders from '../Components/PartnerProfile/PartnerOrders';
 // import PartnerSettings from '../Components/PartnerProfile/PartnerSettings';
 
 const PartnerDetail = () => {
   const [activeTab, setActiveTab] = useState("profile");
+  const [storeDetail,setstoreDetail]=useState();
+  const { id } = useParams();
+  console.log("storeeeeeeeeeeeeeee")
+ if (id) {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/partners`,{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          }, 
+          body: JSON.stringify(id)
+        });
+        const data = await response.json();
+         setstoreDetail(data);
 
+        console.log('data888888',data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    fetchData()
+  },[id])
+
+ }
   const tabs = [
     { id: "profile", label: "Store Profile", icon: <FiUser /> },
-    { id: "status", label: "App Status", icon: <FiUser /> },
+    { id: "orderEdits", label: "Order Edits", icon: <FiUser /> },
     { id: "features", label: "App Features", icon: <FiUser /> },
     { id: "settings", label: "Settings", icon: <FiUser /> },
   ];
-
+console.log("storedetailll",setstoreDetail)
   const renderComponent = () => {
     switch (activeTab) {
       case "profile":
-        return <PartnerProfile />;
-      // case "status":
-      //   return <PartnerOrders />;
+        return <StoreProfile storeinfo={storeDetail}/>;
+      case "orderEdits":
+        return <OrderEditss/>
       // case "features":
       //   return <PartnerSettings />;
       // default:
